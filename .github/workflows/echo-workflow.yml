@@ -36,3 +36,30 @@ jobs:
           else
             echo "Secret is missing"
           fi
+      - name: Display Runner Environment Variables
+        run: |
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Runner Name: ${{ runner.name }}"
+          echo "Runner Tool Cache: ${{ runner.tool_cache }}"
+          echo "Runner Temp: ${{ runner.temp }}"
+          echo "Runner Workspace: ${{ runner.workspace }}"
+      - name: Built in System Environment Variables
+        run: |
+          echo "HOME: $HOME"
+          echo "PATH: $PATH"
+          echo "USER: $USER"
+          echo "PWD: $PWD"
+      - name: Custom Environment Variables
+        env:
+          CUSTOM_VAR: "custom-value"
+          ANOTHER_VAR: "another-value"
+        run: |
+          echo "Custom: $CUSTOM_VAR"
+          echo "Another: $ANOTHER_VAR"
+      - name: Set Environment Variable
+        run: |
+          echo "MY_VALUE=test123" >> $GITHUB_ENV
+
+      - name: Use Environment Variable
+        run: |
+          echo "Value: $MY_VALUE"
