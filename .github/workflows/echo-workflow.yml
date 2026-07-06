@@ -91,3 +91,12 @@ jobs:
         run: |
           echo "Message: ${{ steps.step1.outputs.message }}"
           echo "Timestamp: ${{ steps.step1.outputs.timestamp }}"
+      - name: Create File
+        run: |
+          echo "Important data" > data.txt
+
+      - name: Read File
+        run: |
+          cat data.txt
+          DATA=$(cat data.txt)
+          echo "Data: $DATA"
