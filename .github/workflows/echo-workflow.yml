@@ -63,3 +63,11 @@ jobs:
       - name: Use Environment Variable
         run: |
           echo "Value: $MY_VALUE"
+jobs:
+  echo-job:
+    runs-on: ubuntu-latest
+    env:
+      JOB_LEVEL_VAR: "available-to-all-steps"
+    steps:
+      - name: Use Job-Level Variable
+        run: echo "$JOB_LEVEL_VAR"
